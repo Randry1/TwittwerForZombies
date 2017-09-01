@@ -42,7 +42,7 @@ class ZombiesController < ApplicationController
   def update
     respond_to do |format|
       if @zombie.update(zombie_params)
-        format.html { redirect_to @zombie, notice: 'Zombie was successfully updated.' }
+        format.html { redirect_to @zombie, notice: 'Зомби успешно изменен' }
         format.json { render :show, status: :ok, location: @zombie }
       else
         format.html { render :edit }
@@ -56,9 +56,9 @@ class ZombiesController < ApplicationController
   def destroy
     @zombie.destroy
     respond_to do |format|
-      format.html { redirect_to zombies_url, notice: 'Zombie was successfully destroyed.' }
-      format.json { head :no_content }
-      format.js
+      format.html { redirect_to zombies_url, notice: 'Зомби успешно удален' }
+      format.json { head :ok }
+      # format.js
     end
   end
 
@@ -85,6 +85,6 @@ class ZombiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def zombie_params
-      params.require(:zombie).permit(:name, :bio, :age)
+      params.require(:zombie).permit(:name, :bio, :age, :decomp)
     end
 end
